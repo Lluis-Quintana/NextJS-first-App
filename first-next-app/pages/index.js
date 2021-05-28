@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -13,10 +13,10 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          <a href="https://nextjs.org">DevTer</a>
+          <Link href="https://nextjs.org">DevTer</Link>
         </h1>
           <nav>
-            <a href="/timeline">Timeline</a>
+            <Link href="/timeline">Timeline</Link>
           </nav>
         <h2>Random description</h2>
       </main>
