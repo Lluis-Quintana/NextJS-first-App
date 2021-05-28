@@ -17,6 +17,12 @@ export default function Timeline({ userName }){
   )
 }
 
-Timeline.getInitialProps = () =>{
-  return {userName: 'Lluís'}
+Timeline.getInitialProps = () => {
+  return fetch('http://localhost:3000/api/hello')
+  .then(res => res.json())
+  .then(resolve =>{
+    console.log(resolve)
+    const {userName} = resolve
+    return {userName}
+  })
 }
