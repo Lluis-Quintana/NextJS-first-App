@@ -1,10 +1,12 @@
 import Link from 'next/link'
 
-export default function Timeline(){
+export default function Timeline({ userName }){
   return ( 
     <>
-      <h1>This is the timeline</h1> 
-      <Link href="/" >Home</Link>
+      <h1>This is the timeline of {userName}</h1> 
+      <Link href="/" >
+          Home
+      </Link>
       <style jsx>{`
         h1{
           font-size:3rem;
@@ -13,4 +15,8 @@ export default function Timeline(){
       `}</style>
     </>
   )
+}
+
+Timeline.getInitialProps = async () =>{
+  return {userName: 'Lluís'}
 }

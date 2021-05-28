@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className={styles.main}>
         <h1 className={styles.title}>
-          <Link href="https://nextjs.org">DevTer</Link>
+          <a href="https://nextjs.org">DevTer</a>
         </h1>
           <nav>
             <Link href="/timeline">Timeline</Link>
