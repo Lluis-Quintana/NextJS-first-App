@@ -17,6 +17,6 @@ export default function Timeline({ userName }){
   )
 }
 
-Timeline.getInitialProps = async () =>{
+Timeline.getInitialProps = () =>{
   return {userName: 'Lluís'}
 }
