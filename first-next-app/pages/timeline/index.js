@@ -7,12 +7,6 @@ export default function Timeline({ userName }){
       <Link href="/" >Home</Link>
       <br />
       <Link href="/detail">Detail</Link>
-      <style jsx>{`
-        h1{
-          font-size:3rem;
-          color:teal;
-        }
-      `}</style>
     </>
   )
 }

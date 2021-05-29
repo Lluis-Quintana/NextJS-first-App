@@ -12,8 +12,8 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          <a href="https://nextjs.org">DevTer</a>
+        <h1>
+          DevTer
         </h1>
           <nav>
             <Link href="/timeline">Timeline</Link>
