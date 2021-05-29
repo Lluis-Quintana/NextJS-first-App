@@ -17,6 +17,8 @@ export default function Home() {
         </h1>
           <nav>
             <Link href="/timeline">Timeline</Link>
+            <br />
+            <Link href="/detail">Detail</Link>
           </nav>
         <h2>Random description</h2>
       </main>
