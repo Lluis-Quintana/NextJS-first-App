@@ -12,12 +12,6 @@ export default function Detail({ userName, data }){
       <Link href="/timeline" >
           Timeline
       </Link>
-      <style jsx>{`
-        h1{
-          font-size:3rem;
-          color:teal;
-        }
-      `}</style>
     </>
   )
 }
