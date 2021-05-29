@@ -7,7 +7,9 @@ a {
   color: blue;
   text-decoration: none;
 }
-
+a:hover{
+  color: violet;
+}
 *, 
 *::before, 
 *::after {
