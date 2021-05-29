@@ -1,12 +1,17 @@
 import Link from 'next/link'
 
-export default function Timeline({ userName }){
+export default function Detail({ userName, data }){
   return ( 
     <>
-      <h1>This is the timeline of {userName}</h1> 
-      <Link href="/" >Home</Link>
+      <h1>{userName}'s detail page</h1> 
+      <p>{data}</p>
+      <Link href="/" >
+          Home
+      </Link>
       <br />
-      <Link href="/detail">Detail</Link>
+      <Link href="/timeline" >
+          Timeline
+      </Link>
       <style jsx>{`
         h1{
           font-size:3rem;
@@ -17,7 +22,7 @@ export default function Timeline({ userName }){
   )
 }
 
-Timeline.getInitialProps = () => {
+Detail.getInitialProps = () => {
   return fetch('http://localhost:3000/api/hello')
   .then(res => res.json())
   }
