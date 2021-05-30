@@ -3,7 +3,7 @@ import color from '../../styles/theme'
 export default function Button ({children, onClick}) {
   return (
     <>
-    <button onclick={onClick}>
+    <button onClick={onClick}>
       {children}
     </button>
     <style jsx>{`
