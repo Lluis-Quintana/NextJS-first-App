@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import colors from '../styles/theme'
 
 export default function Home() {
   return (
@@ -22,13 +23,19 @@ export default function Home() {
               <br />
               <Link href="/detail">Detail</Link>
             </nav>
-          <h2>Random description</h2>
+          <h3>Talk about development with developers</h3>
         </main>
       </div>
       <style jsx>
       {`
       img{
         width:50%;
+      }
+      h1{
+        color:${colors.primary};
+      }
+      h3{
+        color: ${colors.secondary}
       }
       `}
       </style>
