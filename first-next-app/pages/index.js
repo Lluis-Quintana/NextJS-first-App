@@ -2,8 +2,17 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import colors from '../styles/theme'
 import Button from '../components/Button'
+import {loginWithGitHub} from '../firebase/client'
 
 export default function Home() {
+  const handleClick = () => {
+    loginWithGitHub().then(user => {
+      console.log(user)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+  
   return (
     <>
       <div className={styles.container}>
@@ -19,7 +28,10 @@ export default function Home() {
             DevTer
           </h1>
           <h3>Talk about development with developers</h3>
-          <Button><img className="github_logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F25%2F25231.png&f=1&nofb=1"></img>Login with GITHUB</Button>
+          <Button onClick={handleClick}>
+            <img className="github_logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F25%2F25231.png&f=1&nofb=1"></img>
+            Login with GITHUB
+          </Button>
         </main>
       </div>
       <style jsx>
