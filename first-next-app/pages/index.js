@@ -5,14 +5,14 @@ import Button from '../components/Button'
 import {loginWithGitHub} from '../firebase/client'
 
 export default function Home() {
-  const handleClick = () => {
+  function handleClick (){
     loginWithGitHub().then(user => {
       console.log(user)
     }).catch(err => {
       console.log(err)
     })
   }
-  
+
   return (
     <>
       <div className={styles.container}>
