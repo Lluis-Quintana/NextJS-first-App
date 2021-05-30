@@ -2,6 +2,7 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
 import colors from '../styles/theme'
+import Button from '../components/Button'
 
 export default function Home() {
   return (
@@ -14,21 +15,17 @@ export default function Home() {
         </Head>
 
         <main className={styles.main}>
-          <img alt="logo_img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe7%2FMobiusStrip-01.png%2F220px-MobiusStrip-01.png&f=1&nofb=1"></img>
+          <img className="logo" alt="logo_img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe7%2FMobiusStrip-01.png%2F220px-MobiusStrip-01.png&f=1&nofb=1"></img>
           <h1>
             DevTer
           </h1>
-            <nav>
-              <Link href="/timeline">Timeline</Link>
-              <br />
-              <Link href="/detail">Detail</Link>
-            </nav>
           <h3>Talk about development with developers</h3>
+          <Button><img className="github_logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F25%2F25231.png&f=1&nofb=1"></img>Login with GITHUB</Button>
         </main>
       </div>
       <style jsx>
       {`
-      img{
+      .logo{
         width:50%;
       }
       h1{
@@ -36,6 +33,10 @@ export default function Home() {
       }
       h3{
         color: ${colors.secondary}
+      }
+      .github_logo{
+        width:25px;
+        margin-right:.5rem;
       }
       `}
       </style>
