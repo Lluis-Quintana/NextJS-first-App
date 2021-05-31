@@ -1,5 +1,9 @@
+/* eslint-disable no-console */
+/* eslint-disable no-shadow */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/jsx-filename-extension */
 import Head from 'next/head';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import styles from '../styles/Home.module.css';
 import colors from '../styles/theme';
 import Button from '../components/Button';
@@ -38,14 +42,14 @@ export default function Home() {
             user === null
               ? (
                 <Button onClick={handleClick}>
-                  <img className="github_logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F25%2F25231.png&f=1&nofb=1" />
+                  <img className="github_logo" alt="github_logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F25%2F25231.png&f=1&nofb=1" />
                   Login with GITHUB
                 </Button>
               )
               : (
-                <div>
-                  <img src={user.avatar} />
-                  <strong>{user.username}</strong>
+                <div className="user__info">
+                  <img className="info__profile-img" src={user.avatar} alt="user_profile_img" />
+                  <strong className="info__name">{user.username}</strong>
                 </div>
               )
             }
@@ -56,6 +60,18 @@ export default function Home() {
         {`
       .logo{
         width:50%;
+      }
+      .user__info{
+        display:flex;
+        align-items:center;
+      }
+      .info__profile-img{
+        width:80px;
+        border-radius:50%;
+        margin-right:20px;
+      }
+      .info__name{
+          font-size:1.2rem;
       }
       h1{
         color:${colors.primary};
