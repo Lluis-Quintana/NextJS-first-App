@@ -1,14 +1,19 @@
 import Head from 'next/head'
+import { useState } from 'react'
 import styles from '../styles/Home.module.css'
 import colors from '../styles/theme'
 import Button from '../components/Button'
 import {loginWithGitHub} from '../firebase/client'
 
 export default function Home() {
+  const [ user, setUser ] = useState(null)
+
   function handleClick (){
     loginWithGitHub().then(user => {
-      console.log(user)
-    }).catch(err => {
+    const {avatar, username, url} = user
+    setUser(user)
+    console.log(user)
+    }).catch(err =>{
       console.log(err)
     })
   }

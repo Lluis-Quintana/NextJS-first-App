@@ -11,9 +11,20 @@ const firebaseConfig = {
   measurementId: "G-PE8X1K87K5"
 };
 
-firebase.initializeApp(firebaseConfig)
+// have to do it because Firebase has problems with fast refresh
+!firebase.apps.length && firebase.initializeApp(firebaseConfig)
 
 export function loginWithGitHub (){
   const gitHubProvider = new firebase.auth.GithubAuthProvider()
   return firebase.auth().signInWithPopup(gitHubProvider)
+  .then(user => {
+    const { additionalUserInfo } = user
+    const { username, profile } = additionalUserInfo
+    const { avatar_url, blog } = profile 
+    return {
+      avatar: avatar_url,
+      username,
+      url: blog,
+    }
+  })
 }
