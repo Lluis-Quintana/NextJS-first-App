@@ -1,21 +1,21 @@
-import Head from 'next/head'
-import { useState } from 'react'
-import styles from '../styles/Home.module.css'
-import colors from '../styles/theme'
-import Button from '../components/Button'
-import {loginWithGitHub} from '../firebase/client'
+import Head from 'next/head';
+import { useState } from 'react';
+import styles from '../styles/Home.module.css';
+import colors from '../styles/theme';
+import Button from '../components/Button';
+import { loginWithGitHub } from '../firebase/client';
 
 export default function Home() {
-  const [ user, setUser ] = useState(null)
+  const [user, setUser] = useState(null);
 
-  function handleClick (){
-    loginWithGitHub().then(user => {
-    const {avatar, username, url} = user
-    setUser(user)
-    console.log(user)
-    }).catch(err =>{
-      console.log(err)
-    })
+  function handleClick() {
+    loginWithGitHub().then((user) => {
+      const { avatar, username, url } = user;
+      setUser(user);
+      console.log(user);
+    }).catch((err) => {
+      console.log(err);
+    });
   }
 
   return (
@@ -28,19 +28,32 @@ export default function Home() {
         </Head>
 
         <main className={styles.main}>
-          <img className="logo" alt="logo_img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe7%2FMobiusStrip-01.png%2F220px-MobiusStrip-01.png&f=1&nofb=1"></img>
+          <img className="logo" alt="logo_img" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fe%2Fe7%2FMobiusStrip-01.png%2F220px-MobiusStrip-01.png&f=1&nofb=1" />
           <h1>
             DevTer
           </h1>
           <h3>Talk about development with developers</h3>
-          <Button onClick={handleClick}>
-            <img className="github_logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F25%2F25231.png&f=1&nofb=1"></img>
-            Login with GITHUB
-          </Button>
+          <div>
+            {
+            user === null
+              ? (
+                <Button onClick={handleClick}>
+                  <img className="github_logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F25%2F25231.png&f=1&nofb=1" />
+                  Login with GITHUB
+                </Button>
+              )
+              : (
+                <div>
+                  <img src={user.avatar} />
+                  <strong>{user.username}</strong>
+                </div>
+              )
+            }
+          </div>
         </main>
       </div>
       <style jsx>
-      {`
+        {`
       .logo{
         width:50%;
       }
@@ -57,5 +70,5 @@ export default function Home() {
       `}
       </style>
     </>
-  )
+  );
 }
