@@ -1,3 +1,6 @@
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-expressions */
+/* eslint-disable camelcase */
 import firebase from 'firebase';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -33,5 +36,5 @@ export const onAuthStateChanged = (onChange) => firebase
   .auth()
   .onAuthStateChanged((user) => {
     const normalizedUser = mapUserFromFirebaseAuthToUser(user);
-    onchange(normalizedUser);
+    onChange(normalizedUser);
   });

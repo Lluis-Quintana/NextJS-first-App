@@ -22,7 +22,9 @@ module.exports = {
     'comma-dangle': [2, 'never'],
     'linebreak-style': 0,
     'global-require': 0,
-    'eslint linebreak-style': [0, 'error', 'windows']
+    'eslint linebreak-style': [0, 'error', 'windows'],
+    'no-debugger': 1,
+    'no-console': 1
   }
 
 };
