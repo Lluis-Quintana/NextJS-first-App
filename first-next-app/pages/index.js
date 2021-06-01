@@ -3,18 +3,26 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/jsx-filename-extension */
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from '../styles/Home.module.css';
 import colors from '../styles/theme';
 import Button from '../components/Button';
-import { loginWithGitHub } from '../firebase/client';
+import {
+  loginWithGitHub,
+  onAuthStateChanged
+} from '../firebase/client';
 
 export default function Home() {
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    onAuthStateChanged(setUser);
+  }, []);
+
   function handleClick() {
     loginWithGitHub().then((user) => {
-      const { avatar, username, url } = user;
+      console.log(user);
+      const { avatar, username, email } = user;
       setUser(user);
       console.log(user);
     }).catch((err) => {
@@ -46,6 +54,7 @@ export default function Home() {
                   Login with GITHUB
                 </Button>
               )
+
               : (
                 <div className="user__info">
                   <img className="info__profile-img" src={user.avatar} alt="user_profile_img" />

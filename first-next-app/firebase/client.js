@@ -1,6 +1,7 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable camelcase */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-expressions */
-/* eslint-disable camelcase */
 import firebase from 'firebase';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -15,26 +16,27 @@ const firebaseConfig = {
 };
 
 // have to do it because Firebase has problems with fast refresh
-!firebase.apps.length && firebase.initializeApp(firebaseConfig);
+!firebase.apps.length
+  && firebase.initializeApp(firebaseConfig);
 
-export function loginWithGitHub() {
-  const gitHubProvider = new firebase.auth.GithubAuthProvider();
-  return firebase.auth().signInWithPopup(gitHubProvider)
-    .then((user) => {
-      const { additionalUserInfo } = user;
-      const { username, profile } = additionalUserInfo;
-      const { avatar_url, blog } = profile;
-      return {
-        avatar: avatar_url,
-        username,
-        url: blog
-      };
-    });
+function mapUserFromFirebaseAuthToUser(user) {
+  const { photoURL, displayName, email } = user;
+  return {
+    avatar: photoURL,
+    username: displayName,
+    email
+  };
 }
 
-export const onAuthStateChanged = (onChange) => firebase
-  .auth()
-  .onAuthStateChanged((user) => {
+export function onAuthStateChanged(onChange) {
+  return firebase.auth().onAuthStateChanged((user) => {
     const normalizedUser = mapUserFromFirebaseAuthToUser(user);
     onChange(normalizedUser);
   });
+}
+
+export function loginWithGitHub() {
+  const gitHubProvider = new firebase.auth
+    .GithubAuthProvider();
+  return firebase.auth().signInWithPopup(gitHubProvider).then(mapUserFromFirebaseAuthToUser);
+}
