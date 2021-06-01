@@ -38,5 +38,5 @@ export function onAuthStateChanged(onChange) {
 export function loginWithGitHub() {
   const gitHubProvider = new firebase.auth
     .GithubAuthProvider();
-  return firebase.auth().signInWithPopup(gitHubProvider).then(mapUserFromFirebaseAuthToUser);
+  return firebase.auth().signInWithPopup(gitHubProvider);
 }

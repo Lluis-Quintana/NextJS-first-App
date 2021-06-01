@@ -21,10 +21,7 @@ export default function Home() {
 
   function handleClick() {
     loginWithGitHub().then((user) => {
-      console.log(user);
-      const { avatar, username, email } = user;
       setUser(user);
-      console.log(user);
     }).catch((err) => {
       console.log(err);
     });
@@ -48,19 +45,21 @@ export default function Home() {
           <div>
             {
             user === null
-              ? (
+              && (
                 <Button onClick={handleClick}>
                   <img className="github_logo" alt="github_logo" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.flaticon.com%2Ficons%2Fpng%2F512%2F25%2F25231.png&f=1&nofb=1" />
                   Login with GITHUB
                 </Button>
               )
-
-              : (
-                <div className="user__info">
-                  <img className="info__profile-img" src={user.avatar} alt="user_profile_img" />
-                  <strong className="info__name">{user.username}</strong>
-                </div>
-              )
+            }
+            {
+              user && user.avatar
+            && (
+            <div className="user__info">
+              <img className="info__profile-img" src={user.avatar} alt="user_profile_img" />
+              <strong className="info__name">{user.username}</strong>
+            </div>
+            )
             }
           </div>
         </main>
