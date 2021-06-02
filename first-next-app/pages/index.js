@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import styles from '../styles/Home.module.css';
 import colors from '../styles/theme';
 import Button from '../components/Button';
+import Avatar from '../components/Avatar';
 import {
   loginWithGitHub,
   onAuthStateChanged
@@ -56,8 +57,12 @@ export default function Home() {
               user && user.avatar
             && (
             <div className="user__info">
-              <img className="info__profile-img" src={user.avatar} alt="user_profile_img" />
-              <strong className="info__name">{user.username}</strong>
+              <Avatar
+                src={user.avatar}
+                alt={user.username}
+                text={user.username}
+                withText
+              />
             </div>
             )
             }
@@ -69,17 +74,7 @@ export default function Home() {
       .logo{
         width:50%;
       }
-      .user__info{
-        display:flex;
-        align-items:center;
-      }
-      .info__profile-img{
-        width:80px;
-        border-radius:50%;
-        margin-right:20px;
-      }
-      .info__name{
-          font-size:1.2rem;
+      font-size:1.2rem;
       }
       h1{
         color:${colors.primary};
