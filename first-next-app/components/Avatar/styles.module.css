@@ -1,0 +1,11 @@
+.container{
+  display:flex;
+  align-items: center;
+}
+.avatar{
+  border-radius:50%;
+  width:50px;
+}
+.avatar + strong{
+  margin-left:0.5rem;
+}
